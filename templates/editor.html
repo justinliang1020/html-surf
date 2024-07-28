@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixed Mobile-Friendly Real-Time HTML Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .editor,
+    .output {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .editor {
+      height: calc(100vh - 100px);
+      padding: 10px;
+      font-family: monospace;
+      resize: none;
+    }
+
+    .output {
+      height: calc(100vh - 100px);
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .toggle-btn {
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+      }
+
+      .editor,
+      .output {
+        width: calc(50% - 5px);
+        height: calc(100vh - 60px);
+        display: block !important;
+      }
+
+      .toggle-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>HTML Editor</h1>
+  <button id="toggleView" class="toggle-btn">Show Output</button>
+  <div class="container">
+    <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
+    <iframe id="output" class="output"></iframe>
+  </div>
+
+  <script>
+    const htmlEditor = document.getElementById('htmlEditor');
+    const output = document.getElementById('output');
+    const toggleBtn = document.getElementById('toggleView');
+
+    let timeout = null;
+
+    function updateOutput() {
+      const html = htmlEditor.value;
+      output.srcdoc = html;
+    }
+
+    function debounce(func, delay) {
+      clearTimeout(timeout);
+      timeout = setTimeout(func, delay);
+    }
+
+    htmlEditor.addEventListener('input', () => debounce(updateOutput, 300));
+
+    function setMobileView() {
+      if (window.innerWidth < 768) {
+        output.style.display = 'none';
+        htmlEditor.style.display = 'block';
+        toggleBtn.style.display = 'inline-block';
+      } else {
+        output.style.display = 'block';
+        htmlEditor.style.display = 'block';
+        toggleBtn.style.display = 'none';
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (htmlEditor.style.display === 'none') {
+        htmlEditor.style.display = 'block';
+        output.style.display = 'none';
+        toggleBtn.textContent = 'Show Output';
+      } else {
+        htmlEditor.style.display = 'none';
+        output.style.display = 'block';
+        toggleBtn.textContent = 'Show Editor';
+      }
+    });
+
+    // Initial setup
+    setMobileView();
+    updateOutput();
+
+    // Recheck on resize
+    window.addEventListener('resize', setMobileView);
+  </script>
+</body>
+
+</html>
