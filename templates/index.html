@@ -4,9 +4,17 @@
 {{ template "head" }}
 
 <body>
-  <h1>
-    hello world
-  </h1>
+  <h1>html surf</h1>
+
+  <div>
+    {{ range $index, $page := .Pages }}
+    <div>
+      <h2>Page</h2>
+      <iframe srcdoc="{{ $page }}"></iframe>
+    </div>
+
+    {{ end }}
+  </div>
 </body>
 
 </html>

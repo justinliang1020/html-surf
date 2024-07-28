@@ -6,7 +6,9 @@
 <body>
   <nav>
     <h1>HTML Editor</h1>
-    <button type="button">publish</button>
+    <button type="button" hx-post="/publish" hx-trigger="click"
+      hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this"
+      hx-swap="innerHTML">publish</button>
   </nav>
   <button id="toggleView" class="toggle-btn">Show Output</button>
   <div class="container">

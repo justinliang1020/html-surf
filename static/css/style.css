@@ -41,7 +41,7 @@ h1 {
 
 .toggle-btn {
   border: none;
-  color: white;
+  background-color: green;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
