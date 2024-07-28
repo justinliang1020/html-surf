@@ -60,6 +60,11 @@
       border-radius: 5px;
     }
 
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
     @media (min-width: 768px) {
       .container {
         flex-direction: row;
@@ -80,7 +85,10 @@
 </head>
 
 <body>
-  <h1>HTML Editor</h1>
+  <nav>
+    <h1>HTML Editor</h1>
+    <button type="button">publish</button>
+  </nav>
   <button id="toggleView" class="toggle-btn">Show Output</button>
   <div class="container">
     <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
