@@ -4,15 +4,16 @@
 {{ template "head" }}
 
 <body>
-  <h1>html surf</h1>
-
+  <nav>
+    <a href="/editor">editor</a>
+  </nav>
+  <h2>latest html creations:</h2>
   <div>
     {{ range $index, $page := .Pages }}
     <div>
       <h2>Page</h2>
       <iframe srcdoc="{{ $page }}"></iframe>
     </div>
-
     {{ end }}
   </div>
 </body>

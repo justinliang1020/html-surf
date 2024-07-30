@@ -4,17 +4,17 @@
 {{ template "head" }}
 
 <body>
-  <div style="display: flex; justify-content: space-between;">
-    <h1>HTML Editor</h1>
+  <nav>
+    <a href="/">home</a>
     <button type="button" hx-post="/publish" hx-trigger="click"
       hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this"
       hx-swap="innerHTML">publish</button>
-  </div>
-  <button id="toggleView" class="toggle-btn">Show Output</button>
+  </nav>
   <div class="container">
     <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
     <iframe id="output" class="output"></iframe>
   </div>
+  <button id="toggleView" class="toggle-btn">Show Output</button>
 
   <script>
     const htmlEditor = document.getElementById('htmlEditor');
