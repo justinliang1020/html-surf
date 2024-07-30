@@ -1,3 +1,7 @@
 package main
 
-var htmls []string
+var snippets []string
+
+func AddSnippet(snippet string) {
+	snippets = append(snippets, snippet)
+}

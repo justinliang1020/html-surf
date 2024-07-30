@@ -14,7 +14,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		Pages []string
 	}
 	data := PageData{
-		Pages: htmls,
+		Pages: snippets,
 	}
 	if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -42,7 +42,7 @@ func PublishHandler(w http.ResponseWriter, r *http.Request) {
 	content := r.Form.Get("content")
 	log.Println("Received content:", content)
 
-	htmls = append(htmls, content)
+	AddSnippet(content)
 	response := `<div>
         Content published successfully!
     </div>`
