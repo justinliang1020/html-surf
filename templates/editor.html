@@ -4,12 +4,12 @@
 {{ template "head" }}
 
 <body>
-  <nav>
+  <div style="display: flex; justify-content: space-between;">
     <h1>HTML Editor</h1>
     <button type="button" hx-post="/publish" hx-trigger="click"
       hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this"
       hx-swap="innerHTML">publish</button>
-  </nav>
+  </div>
   <button id="toggleView" class="toggle-btn">Show Output</button>
   <div class="container">
     <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>

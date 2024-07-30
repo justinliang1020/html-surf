@@ -20,17 +20,13 @@ body {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 0px;
+  height: calc(100vh - 100px);
 }
 
 .editor {
-  height: calc(100vh - 100px);
-  padding: 10px;
   font-family: monospace;
   resize: none;
-}
-
-.output {
-  height: calc(100vh - 100px);
 }
 
 h1 {
