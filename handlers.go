@@ -11,10 +11,10 @@ var templates = template.Must(template.ParseGlob("templates/*.html"))
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	type PageData struct {
-		Pages []string
+		Snippets []Snippet
 	}
 	data := PageData{
-		Pages: snippets,
+		Snippets: GetLatestSnippets(3),
 	}
 	if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -42,7 +42,11 @@ func PublishHandler(w http.ResponseWriter, r *http.Request) {
 	content := r.Form.Get("content")
 	log.Println("Received content:", content)
 
-	AddSnippet(content)
+	AddSnippet(Snippet{
+		Html:   content,
+		Title:  "Placeholder Title",
+		Author: "Placeholder Author",
+	})
 	response := `<div>
         Content published successfully!
     </div>`

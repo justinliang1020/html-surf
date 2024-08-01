@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	SeedSnippets()
+
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static", addCorrectMIMEType(fs)))
 	http.HandleFunc("/editor", EditorHandler)
