@@ -40,13 +40,8 @@ func PublishHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	content := r.Form.Get("content")
-	log.Println("Received content:", content)
 
-	AddSnippet(Snippet{
-		Html:   content,
-		Title:  "Placeholder Title",
-		Author: "Placeholder Author",
-	})
+	AddSnippet(content, "Placeholder Title", "Placeholder Author")
 	response := `<div>
         Content published successfully!
     </div>`
