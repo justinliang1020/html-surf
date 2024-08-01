@@ -7,14 +7,20 @@
   <nav>
     <a href="/editor">editor</a>
   </nav>
-  <h2>latest html creations:</h2>
+  <h2>explore</h2>
   <div>
-    {{ range $index, $page := .Pages }}
-    <div>
-      <h2>Page</h2>
-      <iframe srcdoc="{{ $page }}"></iframe>
-    </div>
-    {{ end }}
+    <ul>
+      {{ range $index, $snippet := .Snippets }}
+      <li class="snippet">
+        <div>
+          <h2>title: {{ $snippet.Title }}</h2>
+          <h3>author: {{ $snippet.Author }}</h3>
+        </div>
+        <iframe srcdoc="{{ $snippet.Html }}"></iframe>
+        <hr style="width: 100%; margin-top: 20px">
+      </li>
+      {{ end }}
+    </ul>
   </div>
 </body>
 
