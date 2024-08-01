@@ -7,8 +7,9 @@
   <nav>
     <a href="/">home</a>
     <button type="button" hx-post="/publish" hx-trigger="click"
-      hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this"
-      hx-swap="innerHTML">publish</button>
+      hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this" hx-swap="innerHTML">publish
+      (button is work in progress and only allows 1 submission)
+    </button>
   </nav>
   <div class="container">
     <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
