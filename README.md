@@ -2,6 +2,8 @@
 
 A collection of html snippets
 
+![screenshot](./screenshot.png)
+
 ## Get Started
 
 1. Install go v1.22 or greater
