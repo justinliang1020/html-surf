@@ -1,20 +1,23 @@
-package main
+package handlers
 
 import (
 	"fmt"
 	"log"
 	"net/http"
 	"text/template"
+
+	"github.com/justinliang1020/html-surf/db"
+	"github.com/justinliang1020/html-surf/services"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	type PageData struct {
-		Snippets []Snippet
+		Snippets []db.Snippet
 	}
 	data := PageData{
-		Snippets: GetLatestSnippets(3),
+		Snippets: services.GetLatestSnippets(3),
 	}
 	if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -41,7 +44,7 @@ func PublishHandler(w http.ResponseWriter, r *http.Request) {
 
 	content := r.Form.Get("content")
 
-	AddSnippet(content, "Placeholder Title", "Placeholder Author")
+	services.AddSnippet(content, "Placeholder Title", "Placeholder Author")
 	response := `<div>
         Content published successfully!
     </div>`

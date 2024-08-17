@@ -1,6 +1,6 @@
-package main
+package utils
 
-func createReversed[T any](s []T) []T {
+func CreateReversed[T any](s []T) []T {
 	length := len(s)
 	reversed := make([]T, length)
 

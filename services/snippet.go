@@ -1,17 +1,12 @@
-package main
+package services
 
 import (
 	"html/template"
 	"strings"
+
+	"github.com/justinliang1020/html-surf/db"
+	"github.com/justinliang1020/html-surf/utils"
 )
-
-type Snippet struct {
-	Html   string
-	Title  string
-	Author string
-}
-
-var snippets []Snippet
 
 func AddSnippet(html string, title string, author string) {
 	// Use template.HTMLEscapeString to escape the HTML
@@ -20,21 +15,21 @@ func AddSnippet(html string, title string, author string) {
 	// Replace " with &quot; as HTMLEscapeString doesn't do this
 	escapedHtml = strings.ReplaceAll(escapedHtml, `"`, "&quot;")
 
-	snippets = append(snippets, Snippet{Html: escapedHtml, Title: title, Author: author})
+	db.Snippets = append(db.Snippets, db.Snippet{Html: escapedHtml, Title: title, Author: author})
 }
 
-func GetLatestSnippets(count int) []Snippet {
-	return createReversed(snippets[max(len(snippets)-count-1, 0):])
+func GetLatestSnippets(count int) []db.Snippet {
+	return utils.CreateReversed(db.Snippets[max(len(db.Snippets)-count-1, 0):])
 }
 
 func SeedSnippets() {
-	snippet1 := Snippet{
+	snippet1 := db.Snippet{
 		Html:   "<h1>hello world!</h1>",
 		Title:  "hello world snippet",
 		Author: "Justin",
 	}
 
-	snippet2 := Snippet{
+	snippet2 := db.Snippet{
 		Html: `
     <style>
         .cat {
@@ -66,7 +61,7 @@ func SeedSnippets() {
 		Author: "claude",
 	}
 
-	snippet3 := Snippet{
+	snippet3 := db.Snippet{
 		Html: `
 <style>
     body {
@@ -99,7 +94,7 @@ func SeedSnippets() {
 		Author: "claude",
 	}
 
-	snippets = []Snippet{}
+	db.Snippets = []db.Snippet{}
 	AddSnippet(snippet1.Html, snippet1.Title, snippet1.Author)
 	AddSnippet(snippet2.Html, snippet2.Title, snippet2.Author)
 	AddSnippet(snippet3.Html, snippet3.Title, snippet3.Author)
