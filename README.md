@@ -1,8 +1,18 @@
 # html surf (working title)
 
+![screenshot](./screenshot.png)
+
 A collection of html snippets
 
-![screenshot](./screenshot.png)
+## Introduction
+
+HTML has been abstracted away as the fundamental artifact of the Internet.
+It's use is hidden by layers of millions of lines of [bloated Javascript packages](https://tonsky.me/blog/js-bloat/) funded by multi-billion dollar software enterprises.
+The average web developer today is pressured into using complex technologies like React just to make simple web pages.
+Thus, developers learn about bloated, evanescent javascript frameworks rather than the fundamental technologies of the internet.
+When we lose touch with how simple the web could be, we also lose the ability for any single individual to share and express themselves on the web.
+
+This project serves as a public collection of vanilla HTML snippets, showing that the web can once again be simple and beautiful.
 
 ## Get Started
 
