@@ -2,18 +2,25 @@
 <html lang="en">
 
 {{ template "head" }}
+<link href="static/css/style2.css" rel="stylesheet">
 
 <body>
-  <nav>
+  <div class="taskarea">
     <a href="/">home</a>
     <button type="button" hx-post="/publish" hx-trigger="click"
       hx-vals="js:{content: document.getElementById('htmlEditor').value}" hx-target="this" hx-swap="innerHTML">publish
       (button is work in progress and only allows 1 submission)
     </button>
-  </nav>
-  <div class="container">
-    <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
-    <iframe id="output" class="output"></iframe>
+  </div>
+  <div class="row">
+    <div class="editbox">
+      <p>Editor</p>
+      <textarea id="htmlEditor" class="editor" placeholder="Enter your HTML here"></textarea>
+    </div>
+    <div class="editbox">
+      <p>Preview</p>
+      <iframe id="output" class="output"></iframe>
+    </div> 
   </div>
   <button id="toggleView" class="toggle-btn">Show Output</button>
 

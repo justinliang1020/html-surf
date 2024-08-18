@@ -1,7 +1,59 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 5px;
+
+html,body{
+  font-family: arial;
+  font-weight: 400;
+  height: 200%; /* Adjust based on the desired scroll length */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.scroll-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.row{
+  flex-direction: row;
+  display: flex;
+  gap:12px;
+}
+.horizontal-scroll {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 800%; /* 8 boxes, each taking up 12.5% */
+}
+iframe{
+  height: 80%;
+  width: 100%;
+}
+.box {
+  margin-left: 20px;
+  flex: 0 0 9%; /* Each box takes up 12.5% of the container's width */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  box-sizing: border-box;
+  border: 2px solid white;
+}
+
+.taskarea{
+  position: fixed;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 h1 {
@@ -10,16 +62,9 @@ h1 {
   margin-bottom: 10px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-}
 
-nav a {
-  font-size: 18px;
-  border-radius: 1.5em;
-  border: 1px solid;
-  padding: 0.5em 0.8em;
+a {
+  /* border: 1px solid; */
   border-color: rgb(61, 66, 69);
   color: var(--nav-link-color);
 }

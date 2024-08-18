@@ -2,26 +2,28 @@
 <html lang="en">
 
 {{ template "head" }}
+<link href="static/css/style.css" rel="stylesheet">
 
 <body>
-  <nav>
-    <a href="/editor">editor</a>
-  </nav>
-  <h1 style="text-align: center; font-size: 4em">html surf</h1>
-  <div>
-    <ul>
+  <div class="gallery">
+  <div class="taskarea">
+    <p>html surf</p>
+    <p><a href="/editor">editor</a></p>
+  </div>
+  <div class="scroll-container">
+    <div class="horizontal-scroll">
       {{ range $index, $snippet := .Snippets }}
-      <li class="snippet">
-        <div>
-          <h2>title: {{ $snippet.Title }}</h2>
-          <h3>author: {{ $snippet.Author }}</h3>
+      <div class="box">
+        <div class="row">
+          <p>{{ $snippet.Title }}</p>
+          <p> by {{ $snippet.Author }}</p>
         </div>
         <iframe srcdoc="{{ $snippet.Html }}"></iframe>
-        <hr style="width: 100%; margin-top: 20px">
-      </li>
+      </div>
       {{ end }}
-    </ul>
   </div>
+</div>
+</div>
 </body>
 
 </html>
