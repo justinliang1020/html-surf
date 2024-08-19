@@ -39,7 +39,36 @@ iframe{
   box-sizing: border-box;
   border: 2px solid white;
 }
+.horizontal-scroll > div:first-of-type{
+margin-left: 250px;
+}
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px; /* Width of the blurred area */
+  pointer-events: none;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0); /* Transparent background */
+  backdrop-filter: blur(3px); /* Apply the blur effect */
+}
+.blur-overlay.left {
+  left: 0;
+  mask-image: linear-gradient(to right, black 70%, transparent); /* Left side gradient */
+}
 
+.blur-overlay.right {
+  right: 0;
+  mask-image: linear-gradient(to left, black 70%, transparent); /* Right side gradient */
+}
+
+.blur-overlay.left {
+  left: 0;
+}
+
+.blur-overlay.right {
+  right: 0;
+}
 .taskarea{
   position: fixed;
   bottom: 1%;
